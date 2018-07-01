@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+    #field {
+        width: 200px;
+        border: 10px groove black;
+        background-color: #00FF00;
+        position: relative;
+    }
+
+    #ball {
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="field">
+    <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    </div>
+
+    <script>
+        clearTimeout(timerId);
+        var timerId = setTimeout(function() {
+            let ball = document.querySelector('#ball'),
+                field = document.querySelector('#field'),
+                ballWidth = ball.clientWidth, 
+                ballHeight = ball.clientHeight,
+                leftMargin = field.clientWidth / 2 - ballWidth / 2,
+                topMargin = field.clientHeight / 2 - ballHeight / 2;
+            
+            ball.style.marginLeft = `${leftMargin}px`;
+            ball.style.marginTop = `${topMargin}px`;
+        }, 100);
+        </script>
+</body>
+
+</html>
