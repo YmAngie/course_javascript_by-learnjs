@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <style>
         table, td {
         border: 1px solid #cecece;
@@ -105,29 +106,32 @@
         function highlight(table) {
             let tr = document.querySelectorAll('tr');
 
-            for (let item in tr) {
+            for (let item of tr) {
                 if (item === 'length') return;
 
-                let tdStatus = tr[item].querySelector('td:last-child'), 
-                    tdGender = tr[item].querySelector('td:nth-child(3)'),
-                    tdAge = tr[item].querySelector('td:nth-child(2)')
+                let tdStatus = item.querySelector('td:last-child'),
+                    tdGender = item.querySelector('td:nth-child(3)'),
+                    tdAge = item.querySelector('td:nth-child(2)');
 
-                if (tdStatus.dataset.available === 'true') {
-                    tr[item].classList.add('available');
-                } else if (!tdStatus.dataset.available === 'false') {
-                    tr[item].classList.add('unavailable');
-                } else if (!tdStatus.dataset.available && item !== '0') {
-                    tr[item].setAttribute('hidden', true);
+                switch (tdStatus.dataset.available) {
+                    case 'true':
+                        item.classList.add('available');
+                        break;
+                    case 'false':
+                        item.classList.add('unavailable');
+                        break;
+                    default:
+                        item.setAttribute('hidden', true);
                 }
 
                 if (tdGender.textContent === 'm') {
-                    tr[item].classList.add('male');
+                    item.classList.add('male');
                 } else if (tdGender.textContent === 'f') {
-                    tr[item].classList.add('female');
+                    item.classList.add('female');
                 }
 
                 if (tdAge.textContent < 18) {
-                    tr[item].style.textDecoration = 'line-through';
+                    item.style.textDecoration = 'line-through';
                 }
             }
         }
