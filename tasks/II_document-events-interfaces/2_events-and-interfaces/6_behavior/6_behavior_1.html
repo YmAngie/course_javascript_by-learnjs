@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            height: 2000px;
+            /* подсказка должна работать независимо от прокрутки */
+        }
+
+        button {
+            position: relative;
+        }
+
+        .tooltip {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid gainsboro;
+            border-radius: 7px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+    <p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+
+    <button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+    <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+    <button data-not-tooltip="Не выводится">И ещё кнопка</button>
+
+    <p>Прокрутите страницу, чтобы ссылки были вверху и проверьте, правильно ли показываются подсказки.</p>
+
+<script>
+    document.addEventListener('mouseover', showTooltip);
+    document.addEventListener('mouseout', hideTooltip);
+
+    function showTooltip(event) {
+        if (!event.target.hasAttribute('data-tooltip')) return;
+
+        let tooltipText = event.target.getAttribute('data-tooltip'),
+            tooltip = document.createElement('p');
+
+        tooltip.className = 'tooltip';
+        tooltip.innerHTML = tooltipText;
+
+        event.target.appendChild(tooltip);
+
+        let left = (event.target.offsetWidth - tooltip.offsetWidth) / 2,
+            top = - tooltip.offsetHeight - 15;
+
+        if (event.target.offsetTop < -top) {
+            top = event.target.offsetHeight + 10;
+        }
+
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+    }
+
+    function hideTooltip(event) {
+        if (!event.target.hasAttribute('data-tooltip')) return;
+
+        let tooltip = event.target.querySelector('.tooltip');
+        tooltip.remove();
+    }
+</script>
+
+</body>
+
+</html>
