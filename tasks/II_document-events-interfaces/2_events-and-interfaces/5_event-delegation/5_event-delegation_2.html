@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="5_event-delegation_2.js" defer></script>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .list__text {
+            cursor: pointer;
+        }
+
+        .list__text:hover {
+            font-weight: bold;
+         }
+    </style>
+</head>
+
+<body>
+
+<ul class="list list_main">
+    <li class="list__item">
+        <span class="list__text">Животные</span>
+        <ul class="list">
+            <li class="list__item">
+                <span class="list__text">Млекопитающие</span>
+                <ul class="list">
+                    <li class="list__item">
+                        <span class="list__text">Коровы</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Ослы</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Собаки</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Тигры</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="list__item">
+                <span class="list__text">Другие</span>
+                <ul class="list">
+                    <li class="list__item">
+                        <span class="list__text">Змеи</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Птицы</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Ящерицы</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li class="list__item">
+        <span class="list__text">Рыбы</span>
+        <ul class="list">
+            <li class="list__item">
+                <span class="list__text">Аквариумные</span>
+                <ul class="list">
+                    <li class="list__item">
+                        <span class="list__text">Гуппи</span>
+                    </li>
+                    <li class="list__item">
+                        <span class="list__text">Скалярии</span>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="list__item">
+                <span class="list__text">Морские</span>
+                <ul class="list">
+                    <li class="list__item">
+                        <span class="list__text">Морская форель</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+
+</html>
