@@ -43,5 +43,3 @@ function move(event) {
         ball.style.top = `${defaultButtomY}px`;
     }
 }
-
-Add tasks on Events & interfaces section (Obtaining event object tasks)
