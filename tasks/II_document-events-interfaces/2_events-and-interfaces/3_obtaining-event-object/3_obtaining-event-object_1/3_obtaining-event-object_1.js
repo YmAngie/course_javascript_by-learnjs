@@ -16,30 +16,19 @@ function move(event) {
     let x = event.clientX,
         y = event.clientY,
         fieldLeftX = field.offsetLeft + field.clientLeft,
-        // fieldRightX = field.offsetLeft + field.clientLeft + field.clientWidth,
         fieldTopY = field.offsetTop + field.clientTop,
-        // fieldButtomY = field.offsetTop + field.offsetHeight - field.clientTop,
-        defaultLeftX = 0,
         defaultRightX = field.clientWidth - ball.clientWidth,
-        defaultTopY = 0,
         defaultButtomY = field.clientHeight - ball.clientWidth;
 
     x = x - fieldLeftX + window.pageXOffset - ball.clientWidth / 2;
     y = y - fieldTopY + window.pageYOffset - ball.clientWidth / 2;
 
-    if (x >= 0 && x <= field.clientWidth - ball.clientWidth) {
-        ball.style.left = `${x}px`;
-    } else if (x < 0) {
-        ball.style.left = `${defaultLeftX}px`;
-    } else if (x > field.clientWidth - ball.clientWidth) {
-        ball.style.left = `${defaultRightX}px`;
-    }
+    x = Math.max(x, 0);
+    x = Math.min(x, defaultRightX);
 
-    if (y >= 0 && y <= field.clientHeight - ball.clientWidth) {
-        ball.style.top = `${y}px`;
-    } else if (y < 0) {
-        ball.style.top = `${defaultTopY}px`;
-    } else if (y > field.clientHeight - ball.clientWidth) {
-        ball.style.top = `${defaultButtomY}px`;
-    }
+    y = Math.max(y, 0);
+    y = Math.min(y, defaultButtomY);
+
+    ball.style.left = `${x}px`;
+    ball.style.top = `${y}px`;
 }
