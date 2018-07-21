@@ -8,6 +8,7 @@ function makeCaching(f) {
     let cachedResultObj = {};
 
     return function wrapper(x) {
+        // I
         if (cachedResultObj.argument === x) {
             return cachedResultObj.result;
         }
@@ -18,6 +19,16 @@ function makeCaching(f) {
         };
 
         return cachedResultObj.result;
+
+        // II
+        // if (!(cachedResultObj.argument === x)) {
+        //     cachedResultObj = {
+        //         argument: x,
+        //         result: f.call(this, x)
+        //     };
+        // }
+        //
+        // return cachedResultObj.result;
     }
 }
 
